@@ -1,0 +1,179 @@
+/* Page background */
+.create-page {
+    min-height: 100vh;
+    background: radial-gradient(circle at top left,
+            #c3dafe,
+            transparent 40%),
+        radial-gradient(circle at bottom right, #fbcfe8, transparent 40%),
+        linear-gradient(135deg, #0f172a, #020617);
+    perspective: 1200px;
+}
+
+/* card */
+.create-card {
+    min-width: 760px;
+    max-width: 900px;
+    width: auto;
+    margin: auto;
+}
+
+.form-subtitle{
+    color: 	#20b2aa !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/* Glass card */
+
+.form-glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 32px;
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* 3D hover tilt */
+/* .form-glass:hover {
+  transform: rotateX(4deg) rotateY(-4deg) translateY(-6px);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+} */
+
+/* Header */
+.form-header h2 {
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+.form-header p {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Inputs */
+.form-control,
+.form-select {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 14px;
+    padding: 12px 14px;
+    transition: all 0.25s ease;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.35);
+}
+
+/* Labels */
+.form-label {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+/* Buttons */
+.btn-primary {
+    border-radius: 14px;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    border: none;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(59, 130, 246, 0.7);
+}
+
+.btn-outline-secondary {
+    border-radius: 14px;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-outline-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Image preview */
+.image-preview {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    transform: translateZ(25px);
+}
+
+/* Modal 3D look */
+.modal-content {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(16px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+}
+
+.sticky-column {
+    padding: 4px;
+    border-radius: 16px;
+}
+
+.sticky-column::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    pointer-events: none;
+}
+
+
+/* responsive */
+@media (max-width: 820px) {
+    .create-card {
+        min-width: unset;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* ===Back Button=== */
+.circle-back {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+.circle-back:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(-2px);
+}
+
+.circle-back i {
+  font-size: 1.2rem;
+}
+
+
+

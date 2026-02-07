@@ -1,0 +1,211 @@
+.main {
+    min-height: 100vh;
+    /* background: radial-gradient(circle at top left,
+            rgba(1, 9, 22, 0.08),
+            transparent 60%),
+        linear-gradient(to bottom,
+            #40e0d0,
+            #E1536a); */
+            background: #4e3b53;
+}
+
+.analog-clock {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #faf8f8;
+    border: 3px solid #990244;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Hands */
+.hand {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom;
+    transform: rotate(0deg);
+    border-radius: 6px;
+}
+
+.hour {
+    width: 4px;
+    height: 18px;
+    background: #212529;
+}
+
+.minute {
+    width: 3px;
+    height: 24px;
+    background: #495057;
+}
+
+.second {
+    width: 2px;
+    height: 28px;
+    background: #dc3545;
+}
+
+/* Center dot */
+.clock-center {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #0d6efd;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Date */
+.flip-calendar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 70px;
+    z-index: 1000;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    font-family: system-ui, sans-serif;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.flip-calendar.flip {
+    transform: rotateX(180deg);
+}
+
+.month {
+    background: #fd0d0d;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 4px 0;
+    text-transform: uppercase;
+}
+
+.day {
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 6px 0;
+    color: #212529;
+}
+
+.year {
+    font-size: 0.7rem;
+    background: #f8f9fa;
+    padding: 3px 0;
+    color: #6c757d;
+}
+
+/* ================================================Capsules card (lock or unlock)================================= */
+.capsule-perspective {
+    position: relative;
+    perspective: 1200px;
+    top: 30px;
+}
+
+/* WRAPPER */
+.gift-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Front wrap */
+.wrap-front {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #5b0e14, #012355);
+    border-radius: 50px 0px 50px 0px;
+    transform-origin: left;
+    transition: transform 1s ease, opacity 0.6s ease;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+/* Top flap */
+.wrap-top {
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    top: 0;
+    background: linear-gradient(135deg, #e0d504, #5c7cfa);
+    border-radius: 50px 0 0 0;
+    transform-origin: top;
+    transition: transform 3s ease;
+}
+
+/* LOCKED STATE */
+.gift-wrapper.closed .wrap-front {
+    transform: rotateY(0deg);
+}
+
+.gift-wrapper.closed .wrap-top {
+    transform: rotateX(0deg);
+}
+
+/* UNLOCKED → OPEN */
+.gift-wrapper.open .wrap-front {
+    transform: rotateY(-120deg);
+    opacity: 0;
+}
+
+.gift-wrapper.open .wrap-top {
+    transform: rotateX(110deg);
+}
+
+/* Card depth */
+.capsule-card-modern {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.6s ease;
+}
+
+.capsule-perspective:hover .capsule-card-modern {
+    transform: translateZ(20px);
+}
+
+/* ==================================Capsule card=============================== */
+
+.capsule-title {
+  font-weight: 500;
+  color: #ff844d; 
+  font-family: cursive;
+}
+
+/* "Opens on*/
+.capsule-date {
+  font-size: 0.85rem;
+  color: #6c757d; 
+}
+
+/* Date value */
+.capsule-date span {
+  color: #0d6efd; 
+  font-weight: 500;
+}
+
+/* Mood */
+.capsule-mood {
+  font-size: 0.85rem;
+  color: #495057;
+}
+
+/* Mood value highlight */
+.capsule-mood strong {
+  color: #845ef7; 
+  font-weight: 600;
+}
+
+/* ==================Remove hr code on Dialog box=========================== */
+/* golbal */
+.modal-header,
+.modal-footer {
+  border: none !important;
+}
+
