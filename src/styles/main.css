@@ -3,14 +3,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
-    background: radial-gradient(circle at top, 	#f08080,#20b2aa);
+    padding: clamp(1rem, 4vw, 2.5rem);
+    background: radial-gradient(circle at top, #f08080, #20b2aa);
 }
 
 .focus-card {
     position: relative;
     min-height: 420px;
     width: 50%;
+    max-width: 1100px;
     perspective: 1200px;
 
     background: linear-gradient(145deg,
@@ -154,8 +155,9 @@
 /* Button */
 .action-buttons {
     perspective: 1000px;
+    flex-wrap: wrap;
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 /* Base 3D button */
@@ -227,15 +229,24 @@
     pointer-events: none;
 }
 
-/* Responsive */
+/* ==================Responsive ======================*/
+/* mobile */
+@media (max-width: 768px) {
+    .focus-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
 /* Tablet */
 @media (max-width: 992px) {
     .app-canvas {
-        flex-direction: column; 
+        flex-direction: column;
         align-items: center;
     }
 
     .right-panel {
+        padding: 5px;
         justify-content: center;
         flex: 1 1 100%;
         margin-top: 1.5rem;
@@ -254,15 +265,23 @@
     }
 }
 
-/* Mobile */
+
 @media (max-width: 576px) {
-    .capsule-box {
-        width: 120px;
-        height: 120px;
-        font-size: 2.5rem;
+    .action-buttons {
+        justify-content: center;
     }
 
-    .focus-card {
-        padding: 1.2rem;
+    .btn-3d {
+        width: 100%;
+        justify-content: center;
+    }
+   
+}
+
+@media (max-width: 992px) {
+    .right-panel {
+        justify-content: center;
+        margin-top: 2rem;
+        padding: 5px;
     }
 }

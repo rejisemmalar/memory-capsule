@@ -16,20 +16,42 @@ function CreateCapsule() {
   const [modalMessage, setModalMessage] = useState("");
 
   const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+  const file = e.target.files[0];
+  if (!file) return;
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
-    reader.readAsDataURL(file);
+  // limit image size 2MB 
+  if (file.size > 2 * 1024 * 1024) {
+    setModalMessage("Please upload an image smaller than 2MB.");
+    setShowModal(true);
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onloadend = () => {
+    setImage(reader.result);
   };
+  reader.readAsDataURL(file);
+};
+
 
   const handleSave = () => {
     if (!title || !message || !openDate) {
       setModalMessage(
         "Please fill in the required fields before locking your capsule.",
+      );
+      setShowModal(true);
+      return;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const selectedDate = new Date(openDate);
+    selectedDate.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+      setModalMessage(
+        " Open date must be in the future. Past dates are not allowed.",
       );
       setShowModal(true);
       return;
@@ -47,13 +69,22 @@ function CreateCapsule() {
     };
 
     const existingCapsules = JSON.parse(localStorage.getItem("capsules")) || [];
+    try {
+      localStorage.setItem(
+        "capsules",
+        JSON.stringify([...existingCapsules, newCapsule]),
+      );
+    } catch (error) {
+      if (error.name === "QuotaExceededError") {
+        setModalMessage(
+          "Storage limit reached. Please remove old capsules or upload a smaller image.",
+        );
+        setShowModal(true);
+        return;
+      }
+    }
 
-    localStorage.setItem(
-      "capsules",
-      JSON.stringify([...existingCapsules, newCapsule]),
-    );
-
-    setModalMessage("Your memory capsule has been locked in time 🕰️");
+    setModalMessage("Your memory capsule has been locked in time ");
     setShowModal(true);
 
     setTimeout(() => {
@@ -82,7 +113,6 @@ function CreateCapsule() {
               <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
                 <Form.Control
-                  placeholder="My First Job Journey"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
@@ -93,7 +123,6 @@ function CreateCapsule() {
                 <Form.Control
                   as="textarea"
                   className="message-box"
-                  placeholder="Today I feel excited and scared..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                 />
@@ -130,6 +159,7 @@ function CreateCapsule() {
                 <Form.Control
                   type="date"
                   value={openDate}
+                  min={new Date().toISOString().split("T")[0]}
                   onChange={(e) => setOpenDate(e.target.value)}
                 />
               </Form.Group>
